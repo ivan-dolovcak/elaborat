@@ -1,0 +1,270 @@
+\section{Izvedba aplikacije}
+
+  \subsection{PHP konfiguracija}
+
+    Ova PHP skripta se obavezno \textit{includea} na vrhu svake druge PHP
+    skripte. Sadrži neke osnovne PHP postavke.
+
+    \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+      PHP -- Osnovna konfiguracija}]{config.php}
+
+  \subsection{Recikliranje koda}
+
+    Jedan od temeljnih principa programiranja je izbjeći lošu redundanciju u
+    kodu (engl. \textit{DRY - Don't Repeat Yourself.}). Iz tog razloga sam kod
+    aplikacije pisao vrlo organizirano i modularno, te pokušavao definirati
+    metode i funkcije za kod koji se ponavlja.
+
+    Npr. postoje klase u projektu \textit{UserModel} i \textit{DocumentModel}.
+    \textit{UserModel} sadrži sve metode i atribute koje opisuju korisnika.
+    Slično vrijedi i za \textit{DocumentModel} klasu.
+
+    \subsubsection{\textit{Util} klasa}
+
+      \textit{Util} klasa (engl. \textit{Utility}) sadrži statičke metode koje
+      se često koriste na raznim mjestima u projektu, ali ne mogu se
+      kategorizirati u klasu za sebe.
+
+      \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+          PHP -- Util klasa}]{Util.php}
+
+    \subsubsection{\textit{DB} klasa}
+
+      \textit{DB} klasa (engl. \textit{DataBase}) sadrži često korištene metode
+      i svojstva vezane za upravljanje bazom podataka, koje su smještene u tzv.
+      \textit{singleton} klasu.
+
+      \lstinputlisting[language=PHP, caption={
+          PHP -- DB klasa}]{DB.php}
+
+      \subsubsection{Jezik aplikacije}
+
+        Višejezičnost aplikacije je postignuta tako da su svi znakovni nizovi
+        korišteni u aplikaciji organizirani u dvije slične PHP datoteke -
+        lang\_en.php i lang\_hr.php. Obje datoteke sadrže asocijativno polje
+        \textit{LANG} -- ključevi su isti, a vrijednosti prevedene.
+
+        \lstinputlisting[language=PHP, caption={
+          PHP -- Engleski znakovni nizovi}]{lang_en.php}
+
+        \lstinputlisting[language=PHP, caption={
+          PHP -- Hrvatski znakovni nizovi}]{lang_hr.php}
+
+    \subsubsection{Osnovna struktura stranice}
+
+    \begin{figure}[h]
+      \includegraphics[width=\textwidth]{page_template}
+      \caption{Početna stranica s popisom dokumenata.}
+    \end{figure}
+
+    Na svakoj stranici se ponavljaju zaglavlje i podnožje. Zaglavlje i podnožje
+    stranice su stavljeni u zasebne datoteke (header.phtml i footer.phtml) te se
+    na svakoj stranici \textit{includeaju}.
+
+    Zaglavlje sadržava logotip aplikacije, naslov i navigator s poveznicama koje
+    vode do glavnih stranica (engl. \textit{views}) aplikacije. Navigator
+    mijenja svoj sadržaj ovisno o tome je li korisnik/ca prijavljen/a. Ako nije,
+    prikazuju se poveznice za registraciju i prijavu. Ako je, onda su te
+    poveznice sakrivene.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.4]{header}
+      \caption{Navigator kad korisnik/ca nije prijavljen/a.}
+    \end{figure}
+
+    \subsection{Korisničke postavke (\textit{front-end})}
+
+      \begin{figure}[h]
+        \begin{center}
+          \begin{subfigure}{0.65\textwidth}
+            \includegraphics[width=\linewidth]{page_preferences_1}
+          \end{subfigure}
+          \\
+          \begin{subfigure}{0.65\textwidth}
+            \includegraphics[width=\linewidth]{page_preferences_2}
+          \end{subfigure}
+
+          \caption{Prilagodljivost sučelja (profile.phtml)}
+        \end{center}
+      \end{figure}
+
+      Izgled sučelja aplikacije je prilagodljiv korisniku.
+      Korisničke postavke (engl. \textit{Preferences}) sastoje se od:
+
+      \begin{itemize}
+        \item teme (svijetla ili tamna),
+        \item jezika (engleski ili hrvatsi)
+        \item i boje isticanja (proizvoljna).
+      \end{itemize}
+
+
+    \subsection{Korisničke postavke (\textit{back-end})}
+
+      Da bi mijenjao/la ove postavke prikaza, korisnik/ca ne mora biti
+      prijavljen/a u aplikaciju, jer se ove postavke spremaju u tzv. kolačić
+      (engl. \textit{cookie}). Ako kolačić ne postoji (prva posjeta \textit{web}
+      sjedištu), dodjeljuju se zadane (\textit{defaultne}) postavke (svijetla
+      tema, zelena boja isticanja, engleski jezik).
+
+      \subsubsection{\textit{Preferences} klasa}
+
+        \lstinputlisting[language=PHP, caption={
+          PHP -- Preferences klasa}]{Preferences.php}
+
+  \subsection{Registracija korisnika (\textit{front-end})}
+
+    \subsubsection{Prikaz obrasca za registraciju}
+
+      \begin{figure}[h]
+          \begin{subfigure}{0.5\textwidth}
+            \includegraphics[width=0.9\linewidth]{form_register_1}
+          \end{subfigure}
+          \begin{subfigure}{0.5\textwidth}
+            \includegraphics[width=0.9\linewidth]{form_register_2}
+          \end{subfigure}
+
+          \caption{Obrazac za registraciju -- validacija u realnom vremenu}
+      \end{figure}
+
+      Kako bi koristio/la sve mogućnosti aplikacije, korisnik/ca mora biti
+      registriran/a. To obavlja preko ovog obrasca, koji je intuitivan jer ima
+      ugrađenu tzv. \textit{front-end} validaciju.
+
+      Također, desno od polja za unos lozinke nalazi se gumb za prikazivanje
+      lozinke. Lozinka se prikazuje samo kad korisnik/ca drži gumb pritisnutim,
+      inače je lozinka skrivena. To je postignuto trivijalnim JS kodom.
+
+      Sva polja moraju biti popunjena i ispravna. Ukoliko neko polje nije ispravno,
+      na dnu obrasca se u realnom vremenu (prije podnašanja obrasca) prikazuje
+      povratna informacija korisniku/ci te mu/joj nije dozvoljeno podnašanje
+      obrasca.
+
+      Ukoliko je ispravno, polje se blago osjenča zelenom bojom. Ovo su uvjeti za
+      ispravnost polja:
+
+      \begin{itemize}
+        \item Korisničko ime: Koristite velika i mala slova bez dijakritičkih
+        znakova, brojeve i donje crte, duljine najmanje 4 znakova.
+        \item Lozinka: Duljine barem 8 znakova, barem 1 veliko slovo i 1 broj.
+        \item Ime i prezime: Duljine najmanje 3 znakova, bez brojeva.
+        \item Korisničko ime i e-mail adresa ne smiju biti zauzeti
+      \end{itemize}
+
+      Valja napomenuti da su tijekom dizajniranja \textit{front-enda} uzete u
+      obzir osnovne prakse pristupačnosti (engl. \textit{accessibility}):
+      autofocus atributi, korištenje label elemenata koji su povezani sa svojim
+      poljima za unos, te je za svako polje sačuvan tabindex atribut.
+
+      \subsubsection{HTML/PHP struktura obrasca registracije}
+
+        \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+          HTML/PHP -- Obrazac za registraciju.}]{form_sign_up.phtml}
+
+      \subsubsection{JS kod za validaciju}
+
+        \lstinputlisting[language=JavaScript, caption={
+          JS -- Live validacija forme.}]{form_validation.js}
+
+  \subsection{Registracija korisnika (\textit{back-end})}
+
+    \textit{Front-end} validaciju vrlo je lako zaobići, stoga je iz
+    sigurnosnih razloga potrebno obaviti validaciju i u \textit{back-end}
+    dijelu aplikacije.
+
+    \subsubsection{Obrada obrasca za registraciju}
+
+      \lstinputlisting[language=PHP, caption={
+        PHP -- Obrada obrasca za registraciju.}]{sign_up.php}
+
+    \subsubsection{Spremanje korisnika u bazu podataka}
+
+      \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+        PHP/SQL -- Spremanje korisnika u bazu podataka.}]{UserModelsignUp.php}
+
+  \subsection{Prijava korisnika}
+
+    \begin{figure}[h]
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth]{form_login_1}
+      \end{subfigure}
+      \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=0.9\linewidth]{form_login_2}
+      \end{subfigure}
+
+      \caption{Obrazac za prijavu}
+    \end{figure}
+
+    Korisnik/ca se može prijaviti ili korisničkim imenom ili e-mail adresom.
+    HTML kod i PHP kod za validaciju je nepotrebno pokazivati jer su vrlo slični
+    kodu svakog drugog obrasca u projektu.
+
+    Ako je lozinka pogrešna, prikazuje se greška korisniku na dnu obrasca.
+
+    \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+        PHP -- Prijava korisnika}]{UserModelLogIn.php}
+
+  \subsection{Profil korisnika}
+
+    \begin{figure}[h]
+      \includegraphics[width=\textwidth]{page_profile}
+      \caption{Stranica s profilom korisnika.}
+    \end{figure}
+
+    Na ovoj stranici nalaze se detalji korisničkog računa. Također, ako je
+    korisnik/ca prijavljen/a, prikazuju se gumbi za odjavu, uređivanje detalja
+    profila i brisanje samog profila.
+
+    Klikom na gumb za odjavu uništava se sesija i preusmjerava se na obrazac za
+    prijavu.
+
+    \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+        PHP -- Odjava korisnika.}]{log_out.php}
+
+    Klikom na gumb za brisanje računa otvara se skočni modalni prozor (engl.
+    \textit{overlay}) za potvrdu brisanja. Ako korisnik potvrdi, briše se račun
+    i svi dokumenti korisnika.
+
+    \lstinputlisting[language=PHP, alsolanguage=HTML, caption={
+      PHP/SQL -- Brisanje korisnika.}]{UserModelDelete.php}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.5\textwidth]{delete_profile}
+      \caption{Skočni modalni prozor za potvrdu brisanja računa.}
+    \end{figure}
+
+    Klikom na gumb za uređivanje profila, otvara se isti obrazac kao za
+    registraciju korisnika (osim polja za lozinku) -- HTML struktura i kod za
+    validaciju se reciklira. Razlika je u tome što se ovaj obrazac prikazuje u
+    \textit{overlayu}. Polja se popune s vrijednostima u bazi podataka.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.5\textwidth]{form_edit_profile}
+      \caption{Skočni modalni prozor za uređivanje profila.}
+    \end{figure}
+
+  \subsection{Početna stranica (\textit{front-end})}
+
+    \subsubsection{Popis dokumenata}
+
+      Na početnoj stranici su tabelarno prikazani svi dokumenti korisnika te
+      njihovi detalji. Klikom na poveznicu u prvom stupcu tablice preusmjerava na
+      stranicu detalja dokumenata, gdje su prikazani svi detalji dokumenta.
+      Prelaskom miša (engl. \textit{hover}) preko datuma roka (ako je definiran)
+      prikazuje se u malom prozoru (engl. \textit{tooltip}) \textit{relativan}
+      datum.
+
+      \begin{figure}[h]
+        \centering
+        \begin{subfigure}{\textwidth}
+          \includegraphics[width=0.9\linewidth]{documents_list}
+        \end{subfigure}
+        \\
+        \begin{subfigure}{\textwidth}
+          \includegraphics[width=0.9\linewidth]{documents_list_en}
+        \end{subfigure}
+
+        \caption{Popis dokumenata; višejezičnost.}
+      \end{figure}

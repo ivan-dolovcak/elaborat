@@ -1,0 +1,336 @@
+\input{preamble.tex}
+
+\begin{document}
+
+\input{titlepage.tex}
+
+\tableofcontents
+
+\newpage
+
+\section{Uvod}
+
+  \subsection{Problematika}
+
+    Ispiti i obrasci su svakodnevnica obrazovnog i poslovnog okruženja. Napretkom
+    tehnologije i digitalizacijom pojavila se ideja za automatiziranjem procesa
+    izrade profesionalnih obrazaca i ispita. Tako su nastale prve (web) aplikacije
+    za izradu, ali i obradu takvih dokumenata. Takve aplikacije su bile
+    inspiracija za temu ovog završnog rada.
+
+  \subsection{Tema}
+
+    Tema završnog rada je web aplikacija za izradu, rješavanje i statistiku
+    ispita i obrazaca. Nadalje u tekstu riječ \textit{dokument} se odnosi na
+    obrase i na ispite. Aplikacijom je moguće izraditi dokumente s određenim
+    postavkama: tip dokumenta (obrazac ili ispit), rok predaje, broj dozvoljenih
+    pokušaja predaje i vidljivost dokumenta (javni, privatni ili skriveni).
+    Nakon izrade dokumenta moguće je i mijenjati te postavke. Također je moguće
+    i obrisati dokumente.
+
+    Aplikacija pruža različite prikaze popisa dokumenata. Moguće je vidjeti
+    vlastite dokumente, ali i pretražiti tuđe, te ih i rješiti (predati).
+
+    Da bi krajnji korisnik/ca aplikacije mogao/la pristupiti svim mogućnostima
+    aplikacije, potrebno se registrirati i prijaviti u aplikaciju. Korisnik/ca
+    nakon prijave može mijenjati detalje svog profila (ime, prezime, korisničko
+    ime i e-mail adresa) te izbrisati svoj profil.
+
+    Također, korisnik/ca može mijenjati izgled aplikacije i bez da je
+    prijavljen/a u aplikaciju. Moguće je odabrati jezik aplikacije (hrvatski ili
+    engleski), temu (svijetla ili tamna) i proizvoljnu boju isticanja (engl.
+    \textit{accent color}).
+
+\section{Programski alati}
+
+  \subsection{Uređivači izvornog koda}
+
+    \subsubsection*{\textit{VSCodium}}
+
+      \textit{VSCodium} je program uređivač izvornog koda koji je razvio
+      Microsoft 2015. g. Vrlo je popularan, funkcionalan i prilagodljiv.
+      Podržava otklanjanje grešaka, ugrađenu \textit{git} kontrolu, isticanje
+      sintakse i automatsko dovršavanje koda. \textit{VSCodium} je inačica
+      programa \textit{VSCode} iz koje je uklonjeno telemetrijsko prikupljanje
+      korisničkih podataka. Izvorni kod programa je besplatan i otvoren.
+
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{vscodium}
+        \caption{VSCodium uređivač koda s otvorenim projektom.}
+      \end{figure}
+
+      \textit{VSCodium} sam koristio kao glavni uređivač teksta za cijeli
+      projekt. Omogučio mi je brzo, organizirano i funkcionalno digitalno radno
+      okruženje.
+
+      \subsubsection*{\textit{vim}}
+
+      \textit{vim} je program uređivač izvornog koda nastao 1991. g. Za razliku
+      od \textit{VSCodiuma} koji ima grafičko korisničko sučelje (GUI),
+      \textit{vim} ima isključivo tekstualno korisničko sučelje (TUI).
+
+      \textit{vim} sam koristio isključivo za uređivanje pojedinačnih datoteka
+      izvan projekta i malih konfiguracijskih datoteka (npr. Apache
+      konfiguracija).
+
+  \subsection{Kontrola izvornog koda}
+
+    \textit{git} je program za upravljanje izvornim kodom nastao 2005. g.
+    Njegov kreator Linus Torvalds je ujedno i voditelj razvoja Linux
+    operativnog sustava.
+
+    Pomoću \textit{gita} sam spremao i bilježio napredak svog projekta.
+    Također sam objavio izvorni kod svoje aplikacije na web sjedištu
+    \textit{GitHubu}, koji nudi uslugu tzv. \textit{hostinga} izvornog koda,
+    što je ujedno služilo za čuvanje sigurnosne kopije.
+
+  \subsection{Terminal}
+
+    \textit{kitty} je napredni Linux emulator terminala (konzola). Koristio sam
+    ga za uklanjanje grešaka, praćenje izlaznih informacija \textit{Apache}
+    servera, upravljanje bazom podataka slanjem naredba, za \textit{git} naredbe
+    i općenito za upravljanje datotekama u projektu.
+
+    \begin{figure}[h]
+      \includegraphics[width=\textwidth]{kitty}
+      \caption{kitty terminal s više otvorenih kartica i panela.}
+    \end{figure}
+
+  \subsection{\textit{Web stack}}
+
+    Aplikacija je razvijana na klasičnom \textit{LAMP} web stogu programske
+    podrške (engl. \textit{web stack}) - Linux, Apache, MariaDB i PHP. Apache je
+    popularan HTTP web server. MariaDB je popularan DBMS (engl. \textit{Database
+    Management System}).
+
+  \subsection{\textit{Web} preglednici}
+
+    \begin{wrapfigure}{r}{0.5\textwidth}
+      \includegraphics[width=\linewidth]{devtools}
+      \caption{Alati za web programere, preglednik Mozilla Firefox.}
+    \end{wrapfigure}
+
+    Aplikacija je testirana na dvoje najpopularnijih web preglednika: Google
+    Chrome i Mozilla Firefox. Potrebno je testirati na više preglednika radi
+    konzistencije izgleda sučelja jer svaki preglednik ima malo drugačiju
+    implementaciju HTML, CSS i JS standarda.
+
+    Važno je spomenuti i integrirane alate za web programere koje nude oba web
+    preglednika: inspektor (engl. \textit{inspector}), konzola (engl.
+    \textit{console}), spremište (engl. \textit{storage}) itd.
+
+  \subsection{Ostalo}
+
+    \begin{itemize}
+      \item JSON linter/validator/minifier: \\ \url{https://jsonlint.com/}
+      \item regular expressions 101: \\ \url{https://regex101.com/}
+      \item phpMyAdmin: \\ \url{https://www.phpmyadmin.net/}
+      \item Fontovi: \\ \url{https://fonts.google.com/}
+      \item Ikonice: \\ \url{https://icons.getbootstrap.com/}
+    \end{itemize}
+
+\section{Programski i ostali jezici}
+
+  \subsection{\textit{Front-end}}
+
+  Pod \textit{front-end} dio aplikacije spadaju sve stranice web aplikacije koje
+  su vidljivi krajnjem korisniku/ci. Preko njih korisnik/ca upravlja i
+  prosljeđuje podatke aplikaciji.
+
+    \subsubsection*{\textit{HTML}}
+
+      HTML (engl. \textit{HyperText Markup Language}) je označni jezik za
+      definiranje osnovne strukture i sadržaja web dokumenata. Koristim aktualnu
+      inačicu i standard \textit{HTML5}.
+
+    \subsubsection*{\textit{CSS}}
+
+      \textit{CSS} (engl. \textit{Cascading Style Sheets}) je jezik za
+      oblikovanje i stiliziranje HTML dokumenata. Omogućava definiranje položaja
+      elemenata, boje, fonta, efekata i sl. Koristim aktualnu inačicu i standard
+      \textit{CSS3}.
+
+    \subsubsection*{\textit{JavaScript}}
+
+      \textit{JavaScript} (skraćeno \textit{JS}) je programski jezik za
+      interakciju s korisnikom, razmjenu podataka i kreiranje dinamične,
+      funkcionalne web stranice. Jezik je visoke razine, dinamički pisan, OO
+      (objektno orijentiran) i interpretiran. Valja spomenuti i DOM (engl.
+      \textit{Document Object Model}) pomoću kojeg je moguće dinamički
+      manipulirati HTML-om i CSS-om dokumenta.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[height=4cm]{front_end}
+      \vspace{0.5cm}
+      \caption{Front-end jezici.}
+    \end{figure}
+
+  \subsection{\textit{Back-end}}
+
+    \subsubsection*{\textit{SQL (MariaDB)}}
+
+      SQL (engl. \textit{Structured Query Language}) je deklarativni jezik koji
+      služi za postavljanje upita (engl. \textit{query}) DBMS-u (bazi podataka).
+      Upitima je moguće kreirati (engl. \textit{create}), čitati (engl.
+      \textit{read}), ažurirati (engl. \textit{update}) i brisati (engl.
+      \textit{delete}) podatke - tzv. CRUD operacije.
+
+    \subsubsection*{\textit{PHP}}
+
+      PHP je skriptni programski jezik koji se izvršava isključivo na
+      poslužitelju. Jezik je visoke razine, dinamički pisan, OO (objektno
+      orijentiran) i interpretiran. Služi za komuniciranje aplikacije s bazom
+      podataka. Nakon izvršavanja na serveru, sav HTML izlaz PHP skripte šalje
+      se klijentskom računalu i korisnik vidi gotovu stranicu.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=\textwidth]{back_end}
+      \caption{Back-end programski jezici i programska podrška.}
+    \end{figure}
+
+  \subsection{Ostalo}
+
+    \subsubsection*{\textit{JSON}}
+
+      JSON (JavaScript Object Notation) je tekstualni format za spremanje
+      podataka. JSON zapisi razumljivi su i čovjeku i računalu (programu).
+
+    \subsubsection*{\textit{LaTeX}}
+
+      PDF dokument elaborata napravljen je pomoću označnog jezika \textit{LaTeX}
+      i prevoditelja (engl. \textit{compiler}) \textit{latexmk}. Iz izvornog
+      \textit{LaTeX} koda prevoditelj generira profesionalno formatirani i
+      stilizirani PDF dokument.
+
+\section{Arhitektura baze podataka}
+
+  \subsection{Dizajn baze podataka}
+
+    Baza podataka sastoji se od 2 tablice: \textit{User} -- korisnici i
+    \textit{Document} -- dokumenti. Veza je 1:M (1 naprema više).
+
+    Svaki zapis entiteta jedinstven je po svojem primarnom ključu (engl.
+    \textit{primary key}, oznaka \textit{PK}). PK je broj koji se inkrementira
+    za svaki novi zapis tog entiteta.
+
+    Tablice se vezuju pomoću tzv. stranih ključeva (engl. \textit{foreign key},
+    oznaka \textit{FK}). \textit{FK} pokazuje na odgovarajući \textit{PK} u
+    nekoj drugoj tablici, i tipovi podataka im moraju biti identični.
+
+    Većina atributa imaju i \textit{not null constraint}, što znači da
+    vrijednosti tog atributa svakog zapisa u tablici treba biti poznat
+    (definiran).
+
+    Baza podataka je projektirana u skladu s prve 3 normalne forme (1NF, 2NF,
+    3NF).
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.85]{model}
+      \caption{Dijagram baze podataka prikazan u \textit{phpMyAdminu}.}
+    \end{figure}
+
+    \subsubsection{Tipovi podataka}
+
+      Važno je kvalitetno odabrati tipove podatka atributa u tablicama tako da
+      se uštedi na memoriji, ali ujedno osigura i buduća prilagodba i
+      proširivost funkcionalnosti baze.
+
+      Primjer toga je način korištenja char i varchar tipova podataka. Brojevi u
+      zagradi (npr. \textit{varchar(40)}) označavaju najveći broj znakova u tom
+      atributu. Također su korišteni i unsigned mediumint primarni ključevi da
+      se dodatno uštedi na pohrani.
+
+    \subsubsection{Entitet \textit{User}}
+
+      Ova tablica služi za pohranu podataka o svakom registriranom korisniku.
+      Čuvaju se: korisničko ime, e-mail, ime, prezime, datum registracije i
+      datum i vrijeme zadnje prijave. Također postoji i atribut
+      \textit{passwordHash}, koji sprema lozinku korisničkog računa, čime se
+      ostvaruje autentikacija i autorizacija korisničkih podataka.
+
+      Valja napomenuti da se prije pohrane u bazu sve lozinke procesiraju kroz
+      jednosmjerni algoritam za tzv. \textit{hashiranje}, tj. kriptira se, što
+      služi kao osnovna mjera zaštite korisničkih lozinka.
+
+    \subsubsection{Entitet \textit{Document}}
+
+      Ova tablica služi za pohranu podataka o dokumentima, tj. ispitima i
+      obrascima. Čuvaju se: naziv dokumenta, tip, vidljivost, broj dozvoljenih
+      pokušaja (predaja), autor dokumenta (FK), datum i vrijeme roka predaje i
+      datum izrade.
+
+      Atribut \textit{documentJSON} je tipa \textit{JSON} i služi za pohranu
+      pitanja i sadržaja od kojih se sastoji svaki dokument.
+
+      Atribut \textit{solutionJSON} pohranjuje samo rješenja dokumenta (ako je
+      taj dokument tipa ispit). Kako bi aplikacija bila povjerljiva, iz
+      sigurnosnih razloga, rješenja dokumenta (odgovori) su odvojena od samih
+      pitanja.
+
+    \subsection{\textit{SQL} skripta baze podataka}
+
+      \subsubsection{Izrada MariaDB korisnika i baze podataka}
+
+        \lstinputlisting[language=SQL, caption={
+          SQL -- Izrada MariaDB korisnika i baze podataka.}]{01_setup.sql}
+
+      \pagebreak[4]
+      \subsubsection{Izrada i povezivanje tablica}
+
+        \lstinputlisting[language=SQL, caption={
+          SQL -- Izrada i povezivanje tablica.}]{02_schema.sql}
+
+
+\input{izvedba.tex}
+
+\section{Zaključak}
+
+  Elaborat završnog rada dokumentira arhitekturu i programsku izvedbu web
+  aplikacije za kreiranje i rješavanje ispita i obrazaca. Korisnik/ca može nakon
+  prijave kreirati svoje dokumente i rješavati tuđe. Korisnik/ca vidi popise
+  vlastitih i tuđih dokumenata i rješenja tih dokumenata. Moguće je uređivanje
+  detalja i brisanje vlastitog profile i vlastitih dokumenata. Korisnik/ca može
+  prilagoditi sučelje aplikacije svojim potrebama. Sučelje aplikacije je
+  intuitivno i pristupačno.
+
+  Prilikom izvedbe web aplikacije korišteni su moderni JavaScript API-ji: Fetch,
+  DOM i Intl. PHP nudi MySQLi API za upravljanje bazom podataka. U PHP-u sam
+  također koristio kolačiće i varijable sesije. I JavaScript i PHP kod pretežito
+  koriste OOP model programiranja.
+
+  Zahvaljujući modularnosti koda i kvalitetnim komentarima, aplikaciju je
+  jednostavno proširiti. U budućnosti bih preveo aplikaciju na više jezika,
+  dodao prijavu pomoću Google API-ja, dodao još različitih tipova pitanja te
+  dotjerao \textit{front-end} da bude još profesionalnijeg izgleda.
+
+  Nastojao sam pisati dobro organiziran, siguran, moderan, kvalitetno
+  dokumentiran, efikasan i modularan izvorni kod -- koliko je god bilo moguće.
+  Ovo mi je najopširniji programerski projekt do sad. Naučio sam jako puno
+  korisnih stvari vezanih uz struku i predmet te uveliko proširio znanje i
+  vještine stečene u školi.
+
+\listoffigures
+
+\lstlistoflistings
+\addcontentsline{toc}{section}{\lstlistlistingname}
+
+\section*{Literatura}
+\addcontentsline{toc}{section}{Literatura}
+
+  \begin{itemize}
+    \item \textit{Stack Overflow} - web sjedište sa pitanjima i odgovorima za
+      profesionalne programere: \url{https://stackoverflow.com/}
+    \item \textit{PHP} priručnik: \url{https://www.php.net/manual/en/}
+    \item \textit{MDN Web Docs} - priručnik za \textit{HTML}, \textit{CSS} i
+      \textit{JavaScript}: \\\url{https://developer.mozilla.org/en-US/}
+    \item \textit{MariaDB SQL} dokumentacija:
+      \url{https://mariadb.com/kb/en/documentation/}
+    \item \textit{Apache} dokumentacija: \url{https://httpd.apache.org/docs/2.4/}
+  \end{itemize}
+
+\input{konzultacijski.tex}
+
+\end{document}
