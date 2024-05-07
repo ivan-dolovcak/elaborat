@@ -2,21 +2,26 @@
 
 \begin{document}
 
+\pagenumbering{gobble}
+
 \input{titlepage.tex}
 
 \tableofcontents
 
 \newpage
 
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
 \section{Uvod}
 
   \subsection{Problematika}
 
-    Ispiti i obrasci su svakodnevnica obrazovnog i poslovnog okruženja. Napretkom
-    tehnologije i digitalizacijom pojavila se ideja za automatiziranjem procesa
-    izrade profesionalnih obrazaca i ispita. Tako su nastale prve (web) aplikacije
-    za izradu, ali i obradu takvih dokumenata. Takve aplikacije su bile
-    inspiracija za temu ovog završnog rada.
+    Ispiti i obrasci su svakodnevnica obrazovnog i poslovnog okruženja.
+    Napretkom tehnologije i digitalizacijom pojavila se ideja za
+    automatiziranjem procesa izrade profesionalnih obrazaca i ispita. Tako su
+    nastale prve (web) aplikacije za izradu, ali i obradu takvih dokumenata.
+    Takve aplikacije su bile inspiracija za temu ovog završnog rada.
 
   \subsection{Tema}
 
@@ -31,13 +36,13 @@
     Aplikacija pruža različite prikaze popisa dokumenata. Moguće je vidjeti
     vlastite dokumente, ali i pretražiti tuđe, te ih i rješiti (predati).
 
-    Da bi krajnji korisnik/ca aplikacije mogao/la pristupiti svim mogućnostima
-    aplikacije, potrebno se registrirati i prijaviti u aplikaciju. Korisnik/ca
+    Da bi krajnji korisnik aplikacije mogao pristupiti svim mogućnostima
+    aplikacije, potrebno se registrirati i prijaviti u aplikaciju. Korisnik
     nakon prijave može mijenjati detalje svog profila (ime, prezime, korisničko
     ime i e-mail adresa) te izbrisati svoj profil.
 
-    Također, korisnik/ca može mijenjati izgled aplikacije i bez da je
-    prijavljen/a u aplikaciju. Moguće je odabrati jezik aplikacije (hrvatski ili
+    Također, korisnik može mijenjati izgled aplikacije i bez da je
+    prijavljen u aplikaciju. Moguće je odabrati jezik aplikacije (hrvatski ili
     engleski), temu (svijetla ili tamna) i proizvoljnu boju isticanja (engl.
     \textit{accent color}).
 
@@ -134,7 +139,7 @@
   \subsection{\textit{Front-end}}
 
   Pod \textit{front-end} dio aplikacije spadaju sve stranice web aplikacije koje
-  su vidljivi krajnjem korisniku/ci. Preko njih korisnik/ca upravlja i
+  su vidljivi krajnjem korisniku. Preko njih korisnik upravlja i
   prosljeđuje podatke aplikaciji.
 
     \subsubsection*{\textit{HTML}}
@@ -277,7 +282,6 @@
         \lstinputlisting[language=SQL, caption={
           SQL -- Izrada MariaDB korisnika i baze podataka.}]{01_setup.sql}
 
-      \pagebreak[4]
       \subsubsection{Izrada i povezivanje tablica}
 
         \lstinputlisting[language=SQL, caption={
@@ -289,10 +293,10 @@
 \section{Zaključak}
 
   Elaborat završnog rada dokumentira arhitekturu i programsku izvedbu web
-  aplikacije za kreiranje i rješavanje ispita i obrazaca. Korisnik/ca može nakon
-  prijave kreirati svoje dokumente i rješavati tuđe. Korisnik/ca vidi popise
+  aplikacije za kreiranje i rješavanje ispita i obrazaca. Korisnik može nakon
+  prijave kreirati svoje dokumente i rješavati tuđe. Korisnik vidi popise
   vlastitih i tuđih dokumenata i rješenja tih dokumenata. Moguće je uređivanje
-  detalja i brisanje vlastitog profile i vlastitih dokumenata. Korisnik/ca može
+  detalja i brisanje vlastitog profile i vlastitih dokumenata. Korisnik može
   prilagoditi sučelje aplikacije svojim potrebama. Sučelje aplikacije je
   intuitivno i pristupačno.
 

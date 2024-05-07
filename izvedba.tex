@@ -63,14 +63,14 @@
 
     Zaglavlje sadržava logotip aplikacije, naslov i navigator s poveznicama koje
     vode do glavnih stranica (engl. \textit{views}) aplikacije. Navigator
-    mijenja svoj sadržaj ovisno o tome je li korisnik/ca prijavljen/a. Ako nije,
+    mijenja svoj sadržaj ovisno o tome je li korisnik prijavljen. Ako nije,
     prikazuju se poveznice za registraciju i prijavu. Ako je, onda su te
     poveznice sakrivene.
 
     \begin{figure}[h]
       \centering
       \includegraphics[scale=0.4]{header}
-      \caption{Navigator kad korisnik/ca nije prijavljen/a.}
+      \caption{Navigator kad korisnik nije prijavljen.}
     \end{figure}
 
     \subsection{Korisničke postavke (\textit{front-end})}
@@ -101,8 +101,8 @@
 
     \subsection{Korisničke postavke (\textit{back-end})}
 
-      Da bi mijenjao/la ove postavke prikaza, korisnik/ca ne mora biti
-      prijavljen/a u aplikaciju, jer se ove postavke spremaju u tzv. kolačić
+      Da bi mijenjao ove postavke prikaza, korisnik ne mora biti
+      prijavljen u aplikaciju, jer se ove postavke spremaju u tzv. kolačić
       (engl. \textit{cookie}). Ako kolačić ne postoji (prva posjeta \textit{web}
       sjedištu), dodjeljuju se zadane (\textit{defaultne}) postavke (svijetla
       tema, zelena boja isticanja, engleski jezik).
@@ -127,17 +127,17 @@
           \caption{Obrazac za registraciju -- validacija u realnom vremenu}
       \end{figure}
 
-      Kako bi koristio/la sve mogućnosti aplikacije, korisnik/ca mora biti
-      registriran/a. To obavlja preko ovog obrasca, koji je intuitivan jer ima
+      Kako bi koristio sve mogućnosti aplikacije, korisnik mora biti
+      registriran. To obavlja preko ovog obrasca, koji je intuitivan jer ima
       ugrađenu tzv. \textit{front-end} validaciju.
 
       Također, desno od polja za unos lozinke nalazi se gumb za prikazivanje
-      lozinke. Lozinka se prikazuje samo kad korisnik/ca drži gumb pritisnutim,
+      lozinke. Lozinka se prikazuje samo kad korisnik drži gumb pritisnutim,
       inače je lozinka skrivena. To je postignuto trivijalnim JS kodom.
 
       Sva polja moraju biti popunjena i ispravna. Ukoliko neko polje nije ispravno,
       na dnu obrasca se u realnom vremenu (prije podnašanja obrasca) prikazuje
-      povratna informacija korisniku/ci te mu/joj nije dozvoljeno podnašanje
+      povratna informacija korisniku te mu nije dozvoljeno podnašanje
       obrasca.
 
       Ukoliko je ispravno, polje se blago osjenča zelenom bojom. Ovo su uvjeti za
@@ -195,7 +195,7 @@
       \caption{Obrazac za prijavu}
     \end{figure}
 
-    Korisnik/ca se može prijaviti ili korisničkim imenom ili e-mail adresom.
+    Korisnik se može prijaviti ili korisničkim imenom ili e-mail adresom.
     HTML kod i PHP kod za validaciju je nepotrebno pokazivati jer su vrlo slični
     kodu svakog drugog obrasca u projektu.
 
@@ -212,7 +212,7 @@
     \end{figure}
 
     Na ovoj stranici nalaze se detalji korisničkog računa. Također, ako je
-    korisnik/ca prijavljen/a, prikazuju se gumbi za odjavu, uređivanje detalja
+    korisnik prijavljen, prikazuju se gumbi za odjavu, uređivanje detalja
     profila i brisanje samog profila.
 
     Klikom na gumb za odjavu uništava se sesija i preusmjerava se na obrazac za

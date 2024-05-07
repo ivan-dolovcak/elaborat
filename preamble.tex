@@ -35,9 +35,11 @@
 \usepackage[useregional]{datetime2}
 \date{\DTMdisplaydate{2023}{10}{02}{-1}} % (-1 = ne prikazuj dan u tjednu)
 
+\usepackage{emptypage}
+
 \usepackage[dotinlabels]{titletoc} % točka poslije brojeva naslova u sadržaju
 \usepackage{titlesec}
-\AddToHook{cmd/section/before}{\clearpage}
+\pretocmd{\section}{\cleardoublepage}{}{}
 \titleformat{\section}
     {\large\bfseries\color{\accentColor}}{\thesection.}{5pt}{}[{\titlerule[1pt]}]
 \titleformat{\subsection}
@@ -156,3 +158,8 @@ literate      =        % Support additional characters
 
 \newlength{\mytextwidth}
 \newlength{\myline}
+
+\def\Author{Ivan Dolovčak}
+\def\Title{\textit{Web} aplikacija za izradu, rješavanje i statistiku ispita i obrazaca}
+
+\usepackage{enumitem}

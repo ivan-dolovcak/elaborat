@@ -22,7 +22,7 @@ class UserModel
         if (! $ID || ! password_verify($password, $passwordHash))
             return false;
 
-        # Spremanjem ID-a korisnika u varijablu sesije, aplikacija zna da je korisnik/ca s tim ID-jem prijavljen/a.
+        # Spremanjem ID-a korisnika u varijablu sesije, aplikacija zna da je korisnik s tim ID-jem prijavljen.
         $_SESSION["userID"] = $ID;
 
         # Ažuriranje stupca datuma i vremena zadnje prijave.

@@ -4,7 +4,7 @@
 class Util
 {
     # Ova metoda služi za dohvaćanje poruke greške (ako ta greška postoji).
-    # U kodu se na raznim mjestima varijabli sesije formErrorMsg dodjeljuje neka poruka greške, koja se kasnije prikazuje korisniku/ci.
+    # U kodu se na raznim mjestima varijabli sesije formErrorMsg dodjeljuje neka poruka greške, koja se kasnije prikazuje korisniku.
     public static function getFormError() : ?string
     {
         $errMsg = $_SESSION["formErrorMsg"] ?? null;
